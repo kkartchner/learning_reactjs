@@ -4,13 +4,16 @@ import classes from './Burger.module.css';
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
 const burger = (props) => {
+    let burgerIngredients = props.ingredients.map((val, i) => {
+        return <BurgerIngredient key={i+ "_" + val} type={val} />
+    });
+    if (burgerIngredients.length === 0){
+        burgerIngredients = <p>Please start adding ingredients!</p>
+    }
     return (
         <div className={classes.Burger}>
             <BurgerIngredient type="bread-top" />
-            <BurgerIngredient type="bacon" />
-            <BurgerIngredient type="salad" />
-            <BurgerIngredient type="cheese" />
-            <BurgerIngredient type="meat" />
+            {burgerIngredients}
             <BurgerIngredient type="bread-bottom" />
         </div>
     )
