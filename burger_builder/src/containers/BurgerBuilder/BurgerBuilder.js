@@ -23,9 +23,14 @@ class BurgerBuilder extends Component {
             <React.Fragment>
                 <Modal
                     show={this.state.ordering}
-                    modalClosed={this.toggleOrdering}
+                    modalClosed={this.toggleOrderSummaryDisplay}
                 >
-                    <OrderSummary ingredients={this.state.ingredients} />
+                    <OrderSummary
+                        ingredients={this.state.ingredients}
+                        purchaseCancelled={this.toggleOrderSummaryDisplay}
+                        purchaseContinued={this.purchaseContinued}
+                        totalPrice={this.state.totalPrice.toFixed(2)}
+                    />
                 </Modal>
                 <Burger ingredients={this.state.ingredients} />
                 <BuildControls
@@ -33,14 +38,18 @@ class BurgerBuilder extends Component {
                     ingredientRemoved={this.removeIngredientHandler}
                     enableList={this.state.ingredients}
                     price={this.state.totalPrice}
-                    onOrdered={this.toggleOrdering}
+                    onOrdered={this.toggleOrderSummaryDisplay}
                 />
             </React.Fragment>
         );
     }
 
-    toggleOrdering = () => {
+    toggleOrderSummaryDisplay = () => {
         this.setState({ ordering: !this.state.ordering });
+    };
+
+    purchaseContinued = () => {
+        alert("You continued!");
     };
 
     addIngredientHandler = (type) => {
