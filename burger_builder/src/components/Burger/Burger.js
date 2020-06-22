@@ -1,14 +1,16 @@
-import React from 'react';
+import React from "react";
 
-import classes from './Burger.module.css';
-import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
+import classes from "./Burger.module.css";
+import BurgerIngredient from "./BurgerIngredient/BurgerIngredient";
 
 const burger = (props) => {
     let burgerIngredients = props.ingredients.map((val, i) => {
-        return <BurgerIngredient key={i+ "_" + val} type={val} />
+        return <BurgerIngredient key={i + "_" + val} type={val} />;
     });
-    if (burgerIngredients.length === 0){
-        burgerIngredients = <p>Please start adding ingredients! (From bottom to top)</p>
+    if (burgerIngredients.length === 0) {
+        burgerIngredients = (
+            <p>Please start adding ingredients! (From bottom to top)</p>
+        );
     }
     return (
         <div className={classes.Burger}>
@@ -16,7 +18,7 @@ const burger = (props) => {
             {burgerIngredients}
             <BurgerIngredient type="bread-bottom" />
         </div>
-    )
-}
+    );
+};
 
 export default burger;
