@@ -8,7 +8,7 @@ const burger = (props) => {
         return <BurgerIngredient key={i+ "_" + val} type={val} />
     });
     if (burgerIngredients.length === 0){
-        burgerIngredients = <p>Please start adding ingredients!</p>
+        burgerIngredients = <p>Please start adding ingredients! (From bottom to top)</p>
     }
     return (
         <div className={classes.Burger}>
