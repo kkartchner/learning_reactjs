@@ -45,7 +45,9 @@ class BurgerBuilder extends Component {
     }
 
     toggleOrderSummaryDisplay = () => {
-        this.setState({ ordering: !this.state.ordering });
+        this.setState((prevState) => {
+            return { ordering: !prevState.ordering };
+        });
     };
 
     purchaseContinued = () => {
