@@ -18,4 +18,8 @@ const modal = (props) => (
     </React.Fragment>
 );
 
-export default modal;
+const areEqual = (prevProps, nextProps) => {
+    return prevProps.show === nextProps.show;
+}
+
+export default React.memo(modal, areEqual);
